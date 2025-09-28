@@ -1,8 +1,10 @@
-import { test, expect } from '@playwright/test';
 
-test('has title', async ({ page }) => {
-  await page.goto('https://projects.hackerearth.com/p9/');
 
-  // Expect a title "to contain" a substring.
-  await expect(page).toHaveTitle(/Buggy Tracker/);
-});
+import { test, } from '/home/hackerearth461/BuggyTraker/tests/Fixtures.ts'
+
+test.describe("Buggy Tracker Challange",() => {
+  test('has title', async ({ analytics }) => {
+    const link = await analytics.returnAnalyticsLink()
+
+  });
+})
