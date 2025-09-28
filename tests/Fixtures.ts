@@ -1,10 +1,12 @@
 import { test as base } from "@playwright/test";
 import { Analyitics } from "/home/hackerearth461/BuggyTraker/pages/analyitics.ts"
 
+import { ApiRespons as ApiResponse } from "/home/hackerearth461/BuggyTraker/utils/apiResponse"
 
 
 type buggyFixtures = {
     analytics: Analyitics
+    apiresponse: ApiResponse
 
 }
 export const test = base.extend<buggyFixtures>({
@@ -18,6 +20,9 @@ export const test = base.extend<buggyFixtures>({
     },
     analytics: async ({ page }, use) => {
         await use(new Analyitics(page))
+    },
+    apiresponse: async ({ page }, use) => {
+        await use(new ApiResponse(page))
     }
 })
 
