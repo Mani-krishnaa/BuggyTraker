@@ -14,7 +14,13 @@ export const test = base.extend<buggyFixtures>({
 
     page: async ({ page }, use) => {
         // Perform any setup before test
+        const analyitics = new Analyitics(page)
+        await page.addLocatorHandler(analyitics.antMOdal, async () => {
+            await analyitics.closeAntModal()
+        })
         await page.goto('https://projects.hackerearth.com/p9/');
+        // Proactively close if already visible
+        await analyitics.closeAntModal().catch(() => { })
         await use(page)
         await page.close();
     },

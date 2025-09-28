@@ -3,14 +3,12 @@
 import { expect, test, } from '/home/hackerearth461/BuggyTraker/tests/Fixtures.ts'
 
 test.describe("Buggy Tracker Challange", () => {
-  test('has title', async ({ analytics, apiresponse }) => {
-    const link = await analytics.returnAnalyticsLink()
-    console.log(link);
+  test('has title', async ({ analytics, apiresponse, page }) => {
 
+    const link = await analytics.returnAnalyticsLink()
     const response = await apiresponse.checkingApiResponse(link!)
     const mani = response == "reachable" ? console.log("it is valid link") : console.log("it is invalid link");
-    ;
-
 
   });
+
 })
