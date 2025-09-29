@@ -11,4 +11,10 @@ test.describe("Buggy Tracker Challenge", () => {
 
   });
 
+  test("Drag and drop", async ({ dragdrop }) => {
+    await dragdrop.dragDrop()
+    expect(await dragdrop.successMessage.waitFor({ state: "visible" }))
+    await expect(dragdrop.successMessage).toHaveText(/Moved "Dashboard loads slowly/);
+  })
+
 })
