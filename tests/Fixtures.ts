@@ -1,11 +1,11 @@
 import { test as base } from "@playwright/test";
-import { Analyitics } from "/home/hackerearth461/BuggyTraker/pages/analyitics.ts"
+import { Analytics } from "/home/hackerearth461/BuggyTraker/pages/analyitics.ts"
 
-import { ApiRespons as ApiResponse } from "/home/hackerearth461/BuggyTraker/utils/apiResponse"
+import { ApiResponse as ApiResponse } from "/home/hackerearth461/BuggyTraker/utils/apiResponse"
 
 
 type buggyFixtures = {
-    analytics: Analyitics
+    analytics: Analytics
     apiresponse: ApiResponse
 
 }
@@ -14,18 +14,18 @@ export const test = base.extend<buggyFixtures>({
 
     page: async ({ page }, use) => {
         // Perform any setup before test
-        const analyitics = new Analyitics(page)
-        await page.addLocatorHandler(analyitics.antMOdal, async () => {
-            await analyitics.closeAntModal()
+        const analytics = new Analytics(page)
+        await page.addLocatorHandler(analytics.antMOdal, async () => {
+            await analytics.closeAntModal()
         })
         await page.goto('https://projects.hackerearth.com/p9/');
         // Proactively close if already visible
-        await analyitics.closeAntModal().catch(() => { })
+        await analytics.closeAntModal().catch(() => { })
         await use(page)
         await page.close();
     },
     analytics: async ({ page }, use) => {
-        await use(new Analyitics(page))
+        await use(new Analytics(page))
     },
     apiresponse: async ({ page }, use) => {
         await use(new ApiResponse(page))

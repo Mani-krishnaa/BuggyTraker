@@ -2,7 +2,7 @@
 
 import { expect, test, } from '/home/hackerearth461/BuggyTraker/tests/Fixtures.ts'
 
-test.describe("Buggy Tracker Challange", () => {
+test.describe("Buggy Tracker Challenge", () => {
   test('has title', async ({ analytics, apiresponse, page }) => {
 
     const link = await analytics.returnAnalyticsLink()

@@ -2,7 +2,7 @@ import { Page, Frame, Locator } from "@playwright/test";
 import { BasePage } from "./basePage";
 
 
-export class Analyitics extends BasePage {
+export class Analytics extends BasePage {
 
     readonly antMOdal: Locator
     readonly closeButton: Locator

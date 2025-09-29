@@ -3,7 +3,7 @@ import { Page } from '@playwright/test';
 import { BasePage } from '../pages/basePage';
 
 
-export class ApiRespons extends BasePage {
+export class ApiResponse extends BasePage {
 
     constructor(page: Page) {
         super(page)
