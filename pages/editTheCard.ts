@@ -14,6 +14,8 @@ export class EditCard extends BasePage {
     readonly calenderInput: Locator
     readonly saveChangesButton: Locator
     readonly savingTicket: Locator
+
+    readonly movedTicket: Locator
     constructor(page: Page) {
         super(page)
         this.antModal = page.locator("(//div[@class='ant-modal-content'])[2]")
@@ -29,6 +31,7 @@ export class EditCard extends BasePage {
         this.calenderInput = page.locator("//input[@id='deadline']")
         this.saveChangesButton = page.locator("//span[text()='Save Changes']")
         this.savingTicket = page.locator("//span[text()='Saving ticket...']")
+        this.movedTicket = page.locator("//div[text()='Moved \"Email notifications not being sent\" to DONE']")
     }
 
 
