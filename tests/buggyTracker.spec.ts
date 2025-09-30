@@ -12,6 +12,11 @@ test.describe("Buggy Tracker Challenge", () => {
     expect(await dragdrop.successMessage.waitFor({ state: "visible" }))
     await expect(dragdrop.successMessage).toHaveText(/Moved "Dashboard loads slowly/);
     await editcard.clickOnEditCard()
+    await editcard.changeWorkingToDone()
+    await editcard.changeAssigneTo()
+    await editcard.changeDeadline()
+    await editcard.saveChangesButtonInForm()
+    expect(await editcard.savingTicket.waitFor({ state: "visible" }))
 
   });
 
