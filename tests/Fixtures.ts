@@ -3,12 +3,14 @@ import { Analytics } from "/home/hackerearth461/BuggyTraker/pages/analyitics.ts"
 
 import { ApiResponse as ApiResponse } from "/home/hackerearth461/BuggyTraker/utils/apiResponse"
 import { DragAndDrop } from "../pages/dragAndDrop";
+import { EditCard } from "../pages/editTheCard"
 
 
 type buggyFixtures = {
     analytics: Analytics
     apiresponse: ApiResponse
     dragdrop: DragAndDrop
+    editcard: EditCard
 
 }
 export const test = base.extend<buggyFixtures>({
@@ -22,8 +24,6 @@ export const test = base.extend<buggyFixtures>({
             await analytics.closeAntModal()
         })
         await page.goto('https://projects.hackerearth.com/p9/');
-        // Proactively close if already visible
-        await analytics.closeAntModal().catch(() => { })
         await use(page)
         await page.close();
     },
@@ -35,6 +35,9 @@ export const test = base.extend<buggyFixtures>({
     },
     dragdrop: async ({ page }, use) => {
         await use(new DragAndDrop(page))
+    },
+    editcard: async ({ page }, use) => {
+        await use(new EditCard(page))
     }
 })
 

@@ -10,7 +10,7 @@ export class Analytics extends BasePage {
     constructor(page: Page) {
         super(page)
 
-        this.antMOdal = page.locator(".ant-modal-content")
+        this.antMOdal = page.locator('.ant-modal-content').nth(1);
         this.closeButton = this.antMOdal.getByRole('button', { name: 'Close' })
     }
 
