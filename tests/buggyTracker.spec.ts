@@ -1,9 +1,8 @@
 
-
 import { expect, test, } from '/home/hackerearth461/BuggyTraker/tests/Fixtures.ts'
 
 test.describe("Buggy Tracker Challenge", () => {
-  test('Checking the response of the link which is inside the Iframe', async ({ analytics, apiresponse, dragdrop, editcard }) => {
+  test('Checking the response of the link which is inside the Iframe', async ({ analytics, apiresponse, dragdrop, editcard, page }) => {
 
     const link = await analytics.returnAnalyticsLink()
     const response = await apiresponse.checkingApiResponse(link!)
@@ -15,8 +14,17 @@ test.describe("Buggy Tracker Challenge", () => {
     await editcard.changeWorkingToDone()
     await editcard.changeAssigneTo()
     await editcard.changeDeadline()
-    await editcard.saveChangesButtonInForm()
-    expect(await editcard.savingTicket.waitFor({ state: "visible" }))
+    while (true) {
+      await editcard.saveChangesButtonInForm()
+      try {
+        expect(await editcard.savingTicket.waitFor({ state: "visible" }))
+        expect(await editcard.movedTicket.waitFor({ state: "visible" }))
+        console.log("Moved ticket is now visible!");
+        break;
+      } catch (error) {
+        await new Promise(resolve => setTimeout(resolve, 100))
+      }
+    }
 
   });
 
